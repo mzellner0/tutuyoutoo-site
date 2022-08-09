@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import PollView from '../views/PollView.vue';
-import AmbassadorVoteView from '../views/AmbassadorVoteView.vue';
-import EmailView from '../views/EmailView.vue';
 import DownloadRedirectView from '../views/DownloadRedirectView.vue';
 
 const routes = [
@@ -10,21 +7,6 @@ const routes = [
     path: '/:lang',
     name: 'Home',
     component: HomeView
-  },
-  {
-    path: '/:lang/poll',
-    name: 'Poll',
-    component: PollView
-  },
-  {
-    path: '/:lang/email',
-    name: 'CollectEmails',
-    component: EmailView
-  },
-  {
-    path: '/:lang/ambassador-vote',
-    name: 'AmbassadorVote',
-    component: AmbassadorVoteView
   },
   {
     path: '/:lang/download-redirect',
@@ -46,9 +28,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (
     to.name === 'Home' ||
-    to.name === 'Poll' ||
-    to.name === 'CollectEmails' ||
-    to.name === 'AmbassadorVote' ||
     to.name === 'Update' ||
     to.name === 'DownloadRedirect'
   ) {

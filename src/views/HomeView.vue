@@ -36,13 +36,10 @@
     <Articles />
     <DownloadApp />
     <Features />
-    <!-- <Email id="email-section" /> -->
-    <Help :short="true" />
     <Social />
     <Story />
     <Features class="home__features" />
     <DownloadApp :is-last="true" />
-    <!-- <Help class="home__help" /> -->
   </div>
 </template>
 
@@ -50,8 +47,6 @@
 import Intro from "@/components/home/Intro";
 import Features from "@/components/home/Features";
 import responsiveMixin from "@/mixins/responsiveMixin";
-import Help from "@/components/home/Help";
-import Email from "@/components/home/Email";
 import Story from "@/components/home/Story";
 import Social from "@/components/home/Social";
 import Button from "@/components/elmts/Button";
@@ -64,9 +59,7 @@ export default {
     Intro,
     DownloadApp,
     Features,
-    Help,
     Story,
-    Email,
     Button,
     Social,
     Articles
