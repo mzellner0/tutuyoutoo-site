@@ -1,0 +1,25 @@
+$police-1: 'Sen', sans-serif;
+$police-2: 'Rubik', sans-serif;
+
+$color-bg: #0F1343;
+$color-bg-light: #1F225A;
+$color-bg-line-1: #333477;
+$color-bg-line-2: #41428D;
+$color-bg-line-3: #4d4e9c;
+$color-police-main: #FFF2D1;
+$color-gradient-1: #FF7987;
+$color-gradient-1-lighter: #fcb7be;
+$color-gradient-1-darker: #f36271;
+$color-gradient-1-placeholder: #fd798694;
+$color-gradient-1-fade: #ff79873d;
+$color-gradient-2: #55BEFF;
+$color-gradient-2-fade: #55beff42;
+$color-gradient-2-placeholder: #3f92c691;
+
+$gradient-main: linear-gradient(90deg, $color-gradient-1, $color-gradient-2);
+$gradient-main-invert: linear-gradient(-90deg, $color-gradient-1, $color-gradient-2);
+$gradient-01: linear-gradient(90deg, $color-gradient-1, transparent);
+$gradient-02: linear-gradient(90deg, $color-gradient-2, transparent);
+$gradient-bg-modal: linear-gradient(45deg, #070921d7, #232350d5);
+
+$space-top-bot: 130px;
