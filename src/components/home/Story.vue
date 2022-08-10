@@ -45,6 +45,7 @@
     <p v-html="$tr[$route.params.lang].story18"></p>
     <p v-html="$tr[$route.params.lang].story19"></p>
     <p v-html="$tr[$route.params.lang].story20"></p>
+    <p v-html="$tr[$route.params.lang].story20b"></p>
     <p v-html="$tr[$route.params.lang].story21"></p>
     <img
       :src="require('@/assets/images/home/desperate.gif')"
@@ -61,6 +62,7 @@
     <p v-html="$tr[$route.params.lang].story25"></p>
     <p v-html="$tr[$route.params.lang].story26"></p>
     <p v-html="$tr[$route.params.lang].story27"></p>
+    <p v-html="$tr[$route.params.lang].story27b"></p>
     <p v-html="$tr[$route.params.lang].story28"></p>
     <p v-html="$tr[$route.params.lang].story29"></p>
     <p v-html="$tr[$route.params.lang].story30"></p>
