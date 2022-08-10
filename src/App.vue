@@ -3,12 +3,12 @@
     <router-view />
     <footer>
       <p>
-        {{ $tr[$route.params.lang].contact }}
+        {{ getContact }}
         <a href="mailto:contact@tutuyoutoo.com">contact@tutuyoutoo.com</a>
       </p>
       <p>
         <a href="https://tutuyoutoo.com/src/policies.pdf" target="_blank">
-          {{ $tr[$route.params.lang].policies }}
+          {{ getPolicies }}
         </a>
       </p>
     </footer>
@@ -18,6 +18,19 @@
 <script>
 
 export default {
+  name: "App",
+  computed: {
+    getContact() {
+      if (this.$route.params.lang) {
+        return this.$tr[this.$route.params.lang].contact;
+      }
+    },
+    getPolicies() {
+      if (this.$route.params.lang) {
+        return this.$tr[this.$route.params.lang].policies;
+      }
+    }
+  }
 };
 </script>
 
