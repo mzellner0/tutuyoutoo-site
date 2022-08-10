@@ -137,7 +137,7 @@ export default {
         feature9Title: "Liste les affaires à prendre :",
         feature10Title: "Faites votre liste de courses :",
         feature11Title: "Liste tes affaires personnelles à emmener avec toi :",
-        feature12Title: "Personnalise ton profile :",
+        feature12Title: "Personnalise ton profil :",
         feature0: "Commence par créer un groupe de vacances en lui donnant un nom et en ajoutant tes amis.",
         feature1a: "Note toutes les dépenses (dans différentes monnaies si besoin et même hors-ligne) du séjour grâce à un système simple et automatique de suivi des finances.",
         feature1b: "Consulte l'équilibre pour savoir qui sera le prochain à payer.",
