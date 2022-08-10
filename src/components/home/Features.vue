@@ -1,38 +1,40 @@
 <template>
-  <ul class="features">
-    <li
-      v-for="(feature, index) in features"
-      :key="index"
-    >
-      <div
-        v-if="feature.alt != 'contacts'"
-        class="features__text"
+  <div class="features__container">
+    <h2>{{ $tr[$route.params.lang].titleFeatures }}</h2>
+    <ul class="features">
+      <li
+        v-for="(feature, index) in features"
+        :key="index"
       >
-        <p
-          v-for="(text, indexT) in feature.texts"
-          :key="indexT"
+        <div
+          v-if="feature.alt != 'contacts'"
+          class="features__text"
         >
-          {{ text }}
-        </p>
-      </div>
-      <div
-        v-else
-        class="features__text"
-      >
-        <p>
-          {{ feature.texts[0] }} <span>{{ feature.texts[1] }}</span>
-        </p>
-      </div>
-      <div class="features__img">
-        <img
-          :src="require(`@/assets/images/screens/${feature.img}`)"
-          :alt="feature.alt"
+          <p
+            v-for="(text, indexT) in feature.texts"
+            :key="indexT"
+          >
+            {{ text }}
+          </p>
+        </div>
+        <div
+          v-else
+          class="features__text"
         >
-      </div>
-    </li>
-  </ul>
+          <p>
+            {{ feature.texts[0] }} <span>{{ feature.texts[1] }}</span>
+          </p>
+        </div>
+        <div class="features__img">
+          <img
+            :src="require(`@/assets/images/screens/${feature.img}`)"
+            :alt="feature.alt"
+          >
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
-
 <script>
 
 export default {
@@ -159,12 +161,7 @@ export default {
 $height-image: 600px;
 $height-bg: 350px;
 .features {
-  width: 900px;
-  margin: 0;
-  margin-top: 60px;
-  padding: 0px 80px;
-  padding-bottom: 50px;
-  border-bottom: 2px solid $color-police-main;
+  padding: 0px;
   list-style: none;
   &--soon {
     opacity: 0.5;
@@ -182,6 +179,22 @@ $height-bg: 350px;
           background-color: $color-bg-line-2;
         }
       }
+    }
+  }
+  &__container {
+    width: 900px;
+    margin: 0;
+    margin-top: 60px;
+    padding: 0px 80px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid $color-police-main;
+    h2 {
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 2px solid #fff2d198;
+      padding-bottom: 20px;
+      width: 95%;
+      margin-left: 2.5%;
     }
   }
   &__img {
@@ -242,9 +255,6 @@ $height-image-medium: 500px;
 $height-bg-medium: 300px;
 @include breakpoint(1279) {
   .features {
-    width: 600px;
-    padding: 0px 60px;
-    padding-bottom: 60px;
     li {
       @include flex(column, center, flex-start);
       &:nth-of-type(2n) {
@@ -252,6 +262,17 @@ $height-bg-medium: 300px;
         .features__text {
           margin-left: 0px;
         }
+      }
+    }
+    &__container {
+      width: 600px;
+      padding: 0px 60px;
+      padding-bottom: 60px;
+      h2 {
+        width: 100%;
+        border: none;
+        padding: 0;
+        margin-left: 0;
       }
     }
     &__text {
@@ -285,10 +306,15 @@ $height-image-small: 450px;
 $height-bg-small: 280px;
 @include breakpoint(800) {
   .features {
-    width: calc(90% - 25px);
-    padding: 0px;
-    padding-left: 25px;
-    padding-bottom: 45px;
+    &__container {
+      width: calc(90% - 25px);
+      padding: 0px;
+      padding-left: 25px;
+      padding-bottom: 45px;
+      h2 {
+        margin-left: -10px;
+      }
+    }
     &__img {
       margin: 10px 0px;
       margin-left: -23px;
