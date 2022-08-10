@@ -13,6 +13,9 @@
           v-if="feature.alt != 'contacts'"
           class="features__text"
         >
+          <h3>
+            {{ feature.title }}
+          </h3>
           <p
             v-for="(text, indexT) in feature.texts"
             :key="indexT"
@@ -24,6 +27,9 @@
           v-else
           class="features__text"
         >
+          <h3>
+            {{ feature.title }}
+          </h3>
           <p>
             {{ feature.texts[0] }} <span>{{ feature.texts[1] }}</span>
           </p>
@@ -54,28 +60,32 @@ export default {
           alt: "gestion des groupes",
           texts: [
             this.$tr[this.$route.params.lang].feature0
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature0Title
         },
         {
           img: "phone-calendar.webp",
           alt: "calendrier",
           texts: [
             this.$tr[this.$route.params.lang].feature5
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature5Title
         },
         {
           img: "phone-expense.webp",
           alt: "transfert d'argent",
           texts: [
             this.$tr[this.$route.params.lang].feature1a
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature1aTitle
         },
         {
           img: "phone-balance.webp",
           alt: "transfert d'argent",
           texts: [
             this.$tr[this.$route.params.lang].feature1b
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature1bTitle
         },
        {
           img: "phone-refund.webp",
@@ -84,35 +94,40 @@ export default {
             this.$tr[this.$route.params.lang].feature1c,
             this.$tr[this.$route.params.lang].feature1d,
             this.$tr[this.$route.params.lang].feature1e
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature1cTitle
         },
         {
           img: "phone-proposition.webp",
           alt: "proposition d'idées",
           texts: [
             this.$tr[this.$route.params.lang].feature2
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature2Title
         },
         {
           img: "phone-pool.webp",
           alt: "vote",
           texts: [
             this.$tr[this.$route.params.lang].feature3
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature3Title
         },
         {
           img: "phone-list-bag.webp",
           alt: "vote",
           texts: [
             this.$tr[this.$route.params.lang].feature9
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature9Title
         },
         {
           img: "phone-list-shop.webp",
           alt: "vote",
           texts: [
             this.$tr[this.$route.params.lang].feature10
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature10Title
         },
         {
           img: "phone-contact.webp",
@@ -120,42 +135,48 @@ export default {
           texts: [
             this.$tr[this.$route.params.lang].feature6a,
             this.$tr[this.$route.params.lang].feature6b
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature6Title
         },
         {
           img: "phone-random-result.webp",
           alt: "dés",
           texts: [
             this.$tr[this.$route.params.lang].feature7
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature7Title
         },
         {
           img: "phone-notif.webp",
           alt: "notification",
           texts: [
             this.$tr[this.$route.params.lang].feature4
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature4Title
         },
         {
           img: "phone-community.webp",
           alt: "notes",
           texts: [
             this.$tr[this.$route.params.lang].feature8
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature8Title
         },
         {
           img: "phone-list-perso.webp",
           alt: "vote",
           texts: [
             this.$tr[this.$route.params.lang].feature11
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature11Title
         },
         {
           img: "phone-profile.webp",
           alt: "vote",
           texts: [
             this.$tr[this.$route.params.lang].feature12
-          ]
+          ],
+          title: this.$tr[this.$route.params.lang].feature12Title
         },
       ]
     }
@@ -168,6 +189,7 @@ $height-image: 600px;
 $height-bg: 350px;
 .features {
   padding: 0px;
+  margin-top: 40px;
   list-style: none;
   &--soon {
     opacity: 0.5;
@@ -204,6 +226,9 @@ $height-bg: 350px;
       padding-bottom: 20px;
       width: 95%;
       margin-left: 2.5%;
+    }
+    h3 {
+      font-weight: bold;
     }
   }
   &__img {
@@ -251,7 +276,7 @@ $height-bg: 350px;
       content: "";
       position: absolute;
       left: -25px;
-      top: 20px;
+      top: 8px;
       width: 10px;
       height: 10px;
       background-color: $color-police-main;
@@ -264,6 +289,7 @@ $height-image-medium: 500px;
 $height-bg-medium: 300px;
 @include breakpoint(1279) {
   .features {
+    margin-top: 20px;
     li {
       @include flex(column, center, flex-start);
       &:nth-of-type(2n) {
@@ -288,6 +314,7 @@ $height-bg-medium: 300px;
       }
     }
     &__text {
+      margin-top: 30px;
       width: 100%;
       margin-right: 0px;
     }
@@ -352,8 +379,9 @@ $height-bg-small: 280px;
       }
     }
     &__text {
+      margin-top: 20px;
       &::before {
-        top: 22px;
+        top: 10px;
         width: 5px;
         height: 5px;
       }

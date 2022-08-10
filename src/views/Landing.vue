@@ -9,7 +9,8 @@
     <Features :is-title="false" />
     <DownloadApp />
     <Articles />
-    <Social :is-last="true" />
+    <Social />
+    <DownloadApp :is-last="true" />
   </div>
 </template>
 
