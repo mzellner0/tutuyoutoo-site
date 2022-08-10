@@ -1,20 +1,21 @@
 <template>
-  <div class="home container">
+  <div class="landing container">
     <LangButton />
     <DownloadButton />
-    <TitleTop />
-    <Intro class="home__intro" />
-    <DownloadApp />
+    <router-link :to="`/${$route.params.lang}`" class="landing__link">
+      <TitleTop />
+    </router-link>
+    <Story class="landing__story" />
     <Features />
+    <DownloadApp />
     <Articles />
     <Social />
-    <DownloadApp :is-last="true" />
   </div>
 </template>
 
 <script>
-import Intro from "@/components/home/Intro";
 import Features from "@/components/home/Features";
+import Story from "@/components/home/Story";
 import Social from "@/components/home/Social";
 import DownloadApp from "@/components/home/DownloadApp";
 import Articles from "@/components/home/Articles";
@@ -23,11 +24,11 @@ import LangButton from "@/components/elmts/LangButton";
 import TitleTop from "../components/elmts/TitleTop.vue";
 
 export default {
-  name: 'HomeView',
+  name: 'LandingView',
   components: {
-    Intro,
     DownloadApp,
     Features,
+    Story,
     Social,
     Articles,
     DownloadButton,
@@ -38,25 +39,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .home {
+  .landing {
     margin-bottom: 100px;
-    &__intro {
-      margin-top: 360px;
-      z-index: 1;
+    &__story {
+      margin-top: 500px;
+    }
+    &__link {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 460px;
+      width: 100%;
     }
   }
 
   @include breakpoint(1279) {
-    .home {
-      &__intro {
-        margin-top: 340px;
+    .landing {
+      &__story {
+        margin-top: 530px;
       }
     }
   }
 
   @include breakpoint(500) {
-    .home {
-      &__intro {
+    .landing {
+      &__link {
+        height: 380px;
+      }
+      &__story {
         margin-top: 360px;
       }
     }
