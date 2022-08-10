@@ -33,12 +33,10 @@
       </div>
     </div>
     <Intro class="home__intro" />
-    <Articles />
     <DownloadApp />
     <Features />
+    <Articles />
     <Social />
-    <Story />
-    <Features class="home__features" />
     <DownloadApp :is-last="true" />
   </div>
 </template>
@@ -158,10 +156,6 @@ export default {
     &__intro {
       margin-top: 360px;
       z-index: 1;
-    }
-    &__features {
-      max-width: 700px;
-      margin-top: 0;
     }
     &__help {
       border: none;

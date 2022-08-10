@@ -23,10 +23,12 @@
           {{ feature.texts[0] }} <span>{{ feature.texts[1] }}</span>
         </p>
       </div>
-      <img
-        :src="require(`@/assets/images/home/${feature.img}`)"
-        :alt="feature.alt"
-      >
+      <div class="features__img">
+        <img
+          :src="require(`@/assets/images/screens/${feature.img}`)"
+          :alt="feature.alt"
+        >
+      </div>
     </li>
   </ul>
 </template>
@@ -39,43 +41,73 @@ export default {
     features() {
       return [
         {
-          img: "money.svg",
-          alt: "transfert d'argent",
+          img: "phone-group.webp",
+          bg: "money.svg",
+          alt: "gestion des groupes",
           texts: [
-            this.$tr[this.$route.params.lang].feature1
+            this.$tr[this.$route.params.lang].feature0
           ]
         },
         {
-          img: "idea.svg",
-          alt: "proposition d'idées",
-          texts: [
-            this.$tr[this.$route.params.lang].feature2
-          ]
-        },
-        {
-          img: "vote.svg",
-          alt: "vote",
-          texts: [
-            this.$tr[this.$route.params.lang].feature3
-          ]
-        },
-        {
-          img: "notification.svg",
-          alt: "notification",
-          texts: [
-            this.$tr[this.$route.params.lang].feature4a,
-            this.$tr[this.$route.params.lang].feature4b
-          ]
-        },
-        {
-          img: "calendar.svg",
+          img: "phone-calendar.webp",
           alt: "calendrier",
           texts: [
             this.$tr[this.$route.params.lang].feature5
           ]
         },
         {
-          img: "contact.svg",
+          img: "phone-expense.webp",
+          alt: "transfert d'argent",
+          texts: [
+            this.$tr[this.$route.params.lang].feature1a
+          ]
+        },
+        {
+          img: "phone-balance.webp",
+          alt: "transfert d'argent",
+          texts: [
+            this.$tr[this.$route.params.lang].feature1b
+          ]
+        },
+       {
+          img: "phone-refund.webp",
+          alt: "transfert d'argent",
+          texts: [
+            this.$tr[this.$route.params.lang].feature1c,
+            this.$tr[this.$route.params.lang].feature1d,
+            this.$tr[this.$route.params.lang].feature1e
+          ]
+        },
+        {
+          img: "phone-proposition.webp",
+          alt: "proposition d'idées",
+          texts: [
+            this.$tr[this.$route.params.lang].feature2
+          ]
+        },
+        {
+          img: "phone-pool.webp",
+          alt: "vote",
+          texts: [
+            this.$tr[this.$route.params.lang].feature3
+          ]
+        },
+        {
+          img: "phone-list-bag.webp",
+          alt: "vote",
+          texts: [
+            this.$tr[this.$route.params.lang].feature9
+          ]
+        },
+        {
+          img: "phone-list-shop.webp",
+          alt: "vote",
+          texts: [
+            this.$tr[this.$route.params.lang].feature10
+          ]
+        },
+        {
+          img: "phone-contact.webp",
           alt: "contacts",
           texts: [
             this.$tr[this.$route.params.lang].feature6a,
@@ -83,19 +115,40 @@ export default {
           ]
         },
         {
-          img: "dice.svg",
+          img: "phone-random-result.webp",
           alt: "dés",
           texts: [
             this.$tr[this.$route.params.lang].feature7
           ]
         },
         {
-          img: "stars.svg",
+          img: "phone-notif.webp",
+          alt: "notification",
+          texts: [
+            this.$tr[this.$route.params.lang].feature4
+          ]
+        },
+        {
+          img: "phone-community.webp",
           alt: "notes",
           texts: [
             this.$tr[this.$route.params.lang].feature8
           ]
-        }
+        },
+        {
+          img: "phone-list-perso.webp",
+          alt: "vote",
+          texts: [
+            this.$tr[this.$route.params.lang].feature11
+          ]
+        },
+        {
+          img: "phone-profile.webp",
+          alt: "vote",
+          texts: [
+            this.$tr[this.$route.params.lang].feature12
+          ]
+        },
       ]
     }
   }
@@ -103,6 +156,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$height-image: 600px;
+$height-bg: 350px;
 .features {
   width: 900px;
   margin: 0;
@@ -122,12 +177,45 @@ export default {
         margin-left: 50px;
         margin-right: 0px;
       }
+      .features__img {
+        &::before {
+          background-color: $color-bg-line-2;
+        }
+      }
     }
   }
-  img {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
+  &__img {
+    position: relative;
+    img {
+      height: $height-image;
+      object-fit: contain;
+      z-index: 1;
+      position: relative;
+      filter: saturate(1.3);
+    }
+    &::before {
+      content: "";
+      width: 300px;
+      z-index: 0;
+      height: $height-bg;
+      background-color: $color-bg-line-1;
+      position: absolute;
+      top: calc((#{$height-image} - #{$height-bg}) / 2);
+      left: -10px;
+      border-radius: 50px;
+      opacity: 0.3;
+    }
+    &::after {
+      content: "";
+      width: 247px;
+      z-index: 0;
+      height: 583px;
+      position: absolute;
+      top: 10px;
+      left: 17px;
+      border-radius: 39px;
+      box-shadow: 0px 0px 20px  rgb(11, 13, 41);
+    }
   }
   &__text {
     width: 500px;
@@ -150,6 +238,8 @@ export default {
   }
 }
 
+$height-image-medium: 500px;
+$height-bg-medium: 300px;
 @include breakpoint(1279) {
   .features {
     width: 600px;
@@ -168,24 +258,57 @@ export default {
       width: 100%;
       margin-right: 0px;
     }
-    img {
-      height: 160px;
+    &__img {
       margin: 10px 0px;
+      img {
+        height: $height-image-medium;
+      }
+      &::before {
+        width: 256px;
+        height: $height-bg-medium;
+        top: calc((#{$height-image-medium} - #{$height-bg-medium}) / 2);
+        border-radius: 30px;
+      }
+      &::after {
+        content: "";
+        width: 204px;
+        height: 485px;
+        top: 9px;
+        left: 14px;
+        border-radius: 27px;
+      }
     }
   }
 }
 
+$height-image-small: 450px;
+$height-bg-small: 280px;
 @include breakpoint(800) {
   .features {
     width: calc(90% - 25px);
     padding: 0px;
     padding-left: 25px;
     padding-bottom: 45px;
-    img {
-      height: 140px;
-      width: 230px;
+    &__img {
       margin: 10px 0px;
-      margin-left: -12px;
+      margin-left: -23px;
+      img {
+        height: $height-image-small;
+      }
+      &::before {
+        width: 233px;
+        height: $height-bg-small;
+        top: calc((#{$height-image-small} - #{$height-bg-small}) / 2);
+        border-radius: 20px;
+      }
+      &::after {
+        content: "";
+        width: 184px;
+        height: 435px;
+        top: 9px;
+        left: 14px;
+        border-radius: 25px;
+      }
     }
     &__text {
       &::before {
