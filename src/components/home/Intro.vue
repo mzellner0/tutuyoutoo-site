@@ -29,7 +29,7 @@ export default {
   border-bottom: 2px solid $color-police-main;
   @include flex(row, flex-end, space-between);
   img {
-    height: 360px;
+    height: 380px;
   }
   &__text {
     width: 500px;
