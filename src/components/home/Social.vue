@@ -1,5 +1,5 @@
 <template>
-	<div class="social">
+	<div :class="['social', { 'social--is-last': isLast }]">
 		<p>{{ $tr[$route.params.lang].follow }}</p>
 		<div class="social__icons">
 			<a href="https://www.tiktok.com/@tutuyoutoo" target="_blank">
@@ -20,7 +20,10 @@
 
 <script>
 export default {
-	name: "Social"
+	name: "Social",
+	props: {
+		isLast: { type: Boolean, default: false }
+	}
 }
 </script>
 
@@ -35,6 +38,10 @@ export default {
   padding-bottom: 100px;
 	margin-top: 60px;
   border-bottom: 2px solid $color-police-main;
+	&--is-last {
+		border: none;
+		padding-bottom: 0px;
+	}
 	&__icons {
 		position: relative;
 		z-index: 2;
@@ -56,6 +63,9 @@ export default {
     width: 600px;
     padding: 0px 60px;
     padding-bottom: 70px;
+		&--is-last {
+			padding-bottom: 0px;
+		}
   }
 }
 
@@ -65,6 +75,9 @@ export default {
     width: 90%;
     padding: 0px;
     padding-bottom: 50px;
+		&--is-last {
+			padding-bottom: 0px;
+		}
   }
 }
 </style>

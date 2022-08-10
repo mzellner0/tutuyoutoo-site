@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view />
-    <footer v-if="showFooter">
+    <footer>
       <p>
         {{ $tr[$route.params.lang].contact }}
         <a href="mailto:contact@tutuyoutoo.com">contact@tutuyoutoo.com</a>
@@ -18,18 +18,6 @@
 <script>
 
 export default {
-  computed: {
-    showFooter() {
-      if (
-        this.$route.path === "/en" ||
-        this.$route.path === "/fr"
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
 };
 </script>
 
