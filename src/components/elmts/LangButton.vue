@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <router-link
-      :to="`/${$route.params.lang === 'fr' ? 'en' : 'fr'}`"
+      :to="`/${$route.params.lang === 'fr' ? 'en' : 'fr'}${link != '' ? '/' + link : ''}`"
     >
       {{ $route.params.lang === "fr" ? "en" : "fr" }}
     </router-link>
@@ -11,6 +11,9 @@
 <script>
 export default {
   name: 'LangButton',
+  props: {
+    link: { type: String, default: "" }
+  }
 };
 </script>
 

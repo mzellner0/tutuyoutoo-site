@@ -1,6 +1,9 @@
 <template>
-  <div class="features__container">
-    <h2>{{ $tr[$route.params.lang].titleFeatures }}</h2>
+  <div :class="[
+    'features__container',
+    { 'features__container--isNotTitle': !isTitle }
+  ]">
+    <h2 v-if="isTitle">{{ $tr[$route.params.lang].titleFeatures }}</h2>
     <ul class="features">
       <li
         v-for="(feature, index) in features"
@@ -39,6 +42,9 @@
 
 export default {
   name: "Features",
+  props: {
+    isTitle: { type: Boolean, default: true }
+  },
   computed: {
     features() {
       return [
@@ -188,6 +194,9 @@ $height-bg: 350px;
     padding: 0px 80px;
     padding-bottom: 50px;
     border-bottom: 2px solid $color-police-main;
+    &--isNotTitle {
+      margin-top: 20px !important;
+    }
     h2 {
       text-align: center;
       text-transform: uppercase;
@@ -274,6 +283,9 @@ $height-bg-medium: 300px;
         padding: 0;
         margin-left: 0;
       }
+      &--isNotTitle {
+        margin-top: 10px !important;
+      }
     }
     &__text {
       width: 100%;
@@ -313,6 +325,9 @@ $height-bg-small: 280px;
       padding-bottom: 45px;
       h2 {
         margin-left: -10px;
+      }
+      &--isNotTitle {
+        margin-top: 0px !important;
       }
     }
     &__img {

@@ -1,12 +1,12 @@
 <template>
   <div class="landing container">
-    <LangButton />
+    <LangButton link="landing" />
     <DownloadButton />
     <router-link :to="`/${$route.params.lang}`" class="landing__link">
       <TitleTop />
     </router-link>
     <Story class="landing__story" />
-    <Features />
+    <Features :is-title="false" />
     <DownloadApp />
     <Articles />
     <Social />

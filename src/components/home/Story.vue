@@ -77,7 +77,7 @@
       :src="require('@/assets/images/home/dance.gif')"
       alt="danser"
     >
-    <p v-html="$tr[$route.params.lang].story33"></p>
+    <h3 v-html="$tr[$route.params.lang].story33"></h3>
   </div>
 </template>
 
@@ -104,6 +104,10 @@ export default {
   h2 {
     text-decoration: underline;
     font-size: 20px;
+  }
+  h3 {
+    margin-top: 40px;
+    text-align: center;
   }
   /deep/ span {
       font-family: $police-2;
