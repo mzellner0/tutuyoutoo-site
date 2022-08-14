@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import DownloadRedirectView from '../views/DownloadRedirectView.vue';
 import Landing from '../views/Landing.vue';
+import OpenOnMobile from '../views/OpenOnMobile.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/:lang/landing',
     name: 'Landing',
     component: Landing
+  },
+  {
+    path: '/:lang/open-on-mobile',
+    name: 'OpenOnMobile',
+    component: OpenOnMobile
   },
   {
     path: '/:lang/download-redirect',
@@ -36,6 +42,7 @@ router.beforeEach((to, from, next) => {
     to.name === 'Home' ||
     to.name === 'Update' ||
     to.name === 'Landing' ||
+    to.name === 'OpenOnMobile' ||
     to.name === 'DownloadRedirect'
   ) {
     if (to.params.lang !== "en" && to.params.lang !== "fr") {

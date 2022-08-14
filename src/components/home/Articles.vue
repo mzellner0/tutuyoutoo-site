@@ -1,47 +1,50 @@
 <template>
-	<div class="articles">
-		<h2>{{ $tr[$route.params.lang].talkAboutUs }}</h2>
-		<div class="articles__section">
-			<a 
-				href="https://www.ledauphine.com/economie/2022/06/17/chambery-maud-zellner-a-cree-une-appli-pour-simplifier-les-vacances"
-				target="_blank"
-				class="articles__article">
-				<img
-					src="@/assets/images/home/articles/dauphine.png"
-					alt="article dauphine"
-				>
-				<p>{{ $tr[$route.params.lang].dauphineTitle }}</p>
-			</a>
-			<a 
-				href="https://www.francebleu.fr/emissions/la-relance-eco/pays-de-savoie"
-				target="_blank"
-				class="articles__article">
-				<video controls>
-					<source
-						src="@/assets/videos/france_bleu.mp4"
-						type="video/mp4"
-					/>
-				</video>
-				<p>{{ $tr[$route.params.lang].franceBleuTitle }}</p>
-			</a>
-			<a 
-				href="https://www.lavoixdunord.fr/1202141/article/2022-07-05/tutuyoutoo-l-appli-pour-des-vacances-en-toute-simplicite"
-				target="_blank"
-				class="articles__article">
-				<img
-					src="@/assets/images/home/articles/voix-du-nord.png"
-					alt="article voix du nord"
-				>
-				<p>{{ $tr[$route.params.lang].voixTitle }}</p>
-			</a>
-		</div>
-	</div>
+  <div class="articles">
+    <h2>{{ $tr[$route.params.lang].talkAboutUs }}</h2>
+    <div class="articles__section">
+      <a 
+        href="https://www.ledauphine.com/economie/2022/06/17/chambery-maud-zellner-a-cree-une-appli-pour-simplifier-les-vacances"
+        target="_blank"
+        class="articles__article"
+      >
+        <img
+          src="@/assets/images/home/articles/dauphine.png"
+          alt="article dauphine"
+        >
+        <p>{{ $tr[$route.params.lang].dauphineTitle }}</p>
+      </a>
+      <a 
+        href="https://www.francebleu.fr/emissions/la-relance-eco/pays-de-savoie"
+        target="_blank"
+        class="articles__article"
+      >
+        <video controls>
+          <source
+            src="@/assets/videos/france_bleu.mp4"
+            type="video/mp4"
+          >
+        </video>
+        <p>{{ $tr[$route.params.lang].franceBleuTitle }}</p>
+      </a>
+      <a 
+        href="https://www.lavoixdunord.fr/1202141/article/2022-07-05/tutuyoutoo-l-appli-pour-des-vacances-en-toute-simplicite"
+        target="_blank"
+        class="articles__article"
+      >
+        <img
+          src="@/assets/images/home/articles/voix-du-nord.png"
+          alt="article voix du nord"
+        >
+        <p>{{ $tr[$route.params.lang].voixTitle }}</p>
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Articles"
-}
+};
 </script>
 
 <style lang="scss" scoped>

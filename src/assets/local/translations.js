@@ -114,7 +114,8 @@ export default {
         talkAboutUs: "They talk about us:",
         dauphineTitle: "The Dauphiné Libéré talks about us: Maud Zellner has created an app to simplify vacations, by David Magnat.",
         voixTitle: "La Voix du Nord talks about us: The app for simple vacations, by Laurent Breye.",
-        franceBleuTitle: "France Bleu pays de Savoie talks about Tutuyoutoo ! Broadcast on June 24, 2022."
+        franceBleuTitle: "France Bleu pays de Savoie talks about Tutuyoutoo ! Broadcast on June 24, 2022.",
+        openOnMobile: "You must open this link from your phone to be redirected to the application."
     },
     fr: {
         title: "Tutuyoutoo",
@@ -231,6 +232,7 @@ export default {
         dauphineTitle: "Le Dauphiné Libéré parle de nous : Maud ZELLNER a créé une appli pour simplifier les vacances, par David Magnat.",
         voixTitle: "La Voix du Nord parle de nous : L'appli pour des vacances en toute simplicité, par Laurent Breye.",
         introTitle: "L'application qui sauve tes vacances :",
-        franceBleuTitle: "France Bleu pays de Savoie parle de Tutuyoutoo ! Diffusé le 24 juin 2022."
+        franceBleuTitle: "France Bleu pays de Savoie parle de Tutuyoutoo ! Diffusé le 24 juin 2022.",
+        openOnMobile: "Vous devez ouvrir ce lien depuis votre téléphone pour être redirigé vers l'application."
     }
 };
