@@ -7,6 +7,7 @@
     </router-link>
     <Story class="landing__story" />
     <Features :is-title="false" />
+    <StoryEnd />
     <DownloadApp />
     <Articles />
     <Social />
@@ -17,6 +18,7 @@
 <script>
 import Features from "@/components/home/Features";
 import Story from "@/components/home/Story";
+import StoryEnd from "@/components/home/StoryEnd";
 import Social from "@/components/home/Social";
 import DownloadApp from "@/components/home/DownloadApp";
 import Articles from "@/components/home/Articles";
@@ -30,6 +32,7 @@ export default {
     DownloadApp,
     Features,
     Story,
+    StoryEnd,
     Social,
     Articles,
     DownloadButton,
