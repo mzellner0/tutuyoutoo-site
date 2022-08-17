@@ -1,5 +1,8 @@
 <template>
-  <a :href="tryOpenLink()" @click="clickOnDownload">
+  <a
+    :href="isOnLanding ? null : tryOpenLink()"
+    @click="clickOnDownload"
+  >
     <Button
       class="button"
       :text="$tr[$route.params.lang].help1button1"
@@ -15,6 +18,9 @@ export default {
   name: 'DownloadButton',
   components: {
     Button,
+  },
+  props: {
+    isOnLanding: { type: Boolean, default: false }
   },
   methods: {
     tryOpenLink() {
@@ -32,9 +38,13 @@ export default {
           device: navigator.userAgent
         }
       );
+      if (this.isOnLanding) {
+        const link = this.tryOpenLink();
+        gtag_report_conversion(link);
+      }
     },
     isOnAndroid() {
-      return /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      return /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     },
     isOnIOS() {
       return [
@@ -46,7 +56,7 @@ export default {
         'iPod'
       ].includes(navigator.platform)
       // iPad on iOS 13 detection
-      || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+      || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
     }
   }
 };

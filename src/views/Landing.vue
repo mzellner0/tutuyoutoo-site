@@ -1,17 +1,18 @@
 <template>
   <div class="landing container">
     <LangButton link="landing" />
-    <DownloadButton />
-    <router-link :to="`/${$route.params.lang}`" class="landing__link">
-      <TitleTop />
-    </router-link>
+    <DownloadButton :is-on-landing="true" />
+    <TitleTop />
     <Story class="landing__story" />
     <Features :is-title="false" />
     <StoryEnd />
-    <DownloadApp />
+    <DownloadApp :is-on-landing="true" />
     <Articles />
     <Social />
-    <DownloadApp :is-last="true" />
+    <DownloadApp
+      :is-on-landing="true"
+      :is-last="true"
+    />
   </div>
 </template>
 
@@ -48,14 +49,6 @@ export default {
     &__story {
       margin-top: 500px;
     }
-    &__link {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 460px;
-      width: 100%;
-    }
   }
 
   @include breakpoint(1279) {
@@ -68,9 +61,6 @@ export default {
 
   @include breakpoint(500) {
     .landing {
-      &__link {
-        height: 380px;
-      }
       &__story {
         margin-top: 360px;
       }
