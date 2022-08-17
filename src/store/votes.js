@@ -17,16 +17,16 @@ export default {
   },
   actions: {
     async addVotePhotoAlbum({ commit }, vote) {
-      VotesService.addVotePhotoAlbum(vote)
-        .then(() => {
-          commit('UPDATE_IS_LOADING', false);
-        })
-        .catch((err) => {
-          if (err.response.data.message === "Tu as déjà voté !") {
-            commit('UPDATE_HAS_ALREADY_VOTE', true);
-          }
-          commit('UPDATE_IS_LOADING', false);
-        });
+      if (!localStorage.getItem('hasVote')) {
+        const response = await VotesService.addVotePhotoAlbum(vote);
+        if (response.status == 201) {
+          localStorage.setItem('hasVote', 'true');
+        }
+        commit('UPDATE_IS_LOADING', false);
+      } else {
+        commit('UPDATE_HAS_ALREADY_VOTE', true);
+        commit('UPDATE_IS_LOADING', false);
+      }
     },
   }
 };

@@ -1,10 +1,14 @@
-import Api from "./Api";
+import { supabase } from "./supabase";
 
 export default {
-  addVotePhotoAlbum(vote) {
-    const params = {
-      vote: vote,
-    };
-    return Api.post(`/vote-photo-album`, params).then(res => res.data);
+  async addVotePhotoAlbum(vote) {
+    return await supabase
+      .from('votephotoalbum')
+      .insert(
+        [{
+          vote: vote
+        }],
+        { returning: "minimal" }
+      );
   }
 }

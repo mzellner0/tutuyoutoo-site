@@ -1,6 +1,6 @@
 <template>
   <div class="page container">
-    <LangButton link="vote-photo-album" />
+    <LangButton :link="`vote-photo-album/${$route.params.vote}`" />
     <TitleTop />
     <Warning
       v-if="!isLoading && !hasAlreadyVote"
