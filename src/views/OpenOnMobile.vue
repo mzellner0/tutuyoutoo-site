@@ -2,7 +2,10 @@
   <div class="home container">
     <LangButton link="open-on-mobile" />
     <TitleTop />
-    <WarningOpen class="home__open-on-mobile" />
+    <Warning
+      class="home__open-on-mobile"
+      :text="$tr[$route.params.lang].openOnMobile"
+    />
     <Social :is-last="true" />
   </div>
 </template>
@@ -11,7 +14,7 @@
 import Social from "@/components/home/Social";
 import LangButton from "@/components/elmts/LangButton";
 import TitleTop from "../components/elmts/TitleTop.vue";
-import WarningOpen from "../components/openOnMobile/warning.vue";
+import Warning from "../components/elmts/warning.vue";
 
 export default {
   name: 'HomeView',
@@ -19,7 +22,7 @@ export default {
     Social,
     LangButton,
     TitleTop,
-    WarningOpen
+    Warning
   }
 };
 </script>

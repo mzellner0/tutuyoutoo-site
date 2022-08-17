@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import DownloadRedirectView from '../views/DownloadRedirectView.vue';
 import Landing from '../views/Landing.vue';
 import OpenOnMobile from '../views/OpenOnMobile.vue';
+import VotePhotoAlbumView from '../views/VotePhotoAlbumView.vue';
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: '/:lang/landing',
     name: 'Landing',
     component: Landing
+  },
+  {
+    path: '/:lang/vote-photo-album/:vote',
+    name: 'VotePhotoAlbum',
+    component: VotePhotoAlbumView
   },
   {
     path: '/:lang/open-on-mobile',
@@ -43,7 +49,8 @@ router.beforeEach((to, from, next) => {
     to.name === 'Update' ||
     to.name === 'Landing' ||
     to.name === 'OpenOnMobile' ||
-    to.name === 'DownloadRedirect'
+    to.name === 'DownloadRedirect' ||
+    to.name === 'VotePhotoAlbum'
   ) {
     if (to.params.lang !== "en" && to.params.lang !== "fr") {
       next({ name: to.name, params: { lang: "fr" } });

@@ -4,17 +4,29 @@ export default {
   namespaced: true,
 
   state: {
-    isLoading: true
+    isLoading: true,
+    hasAlreadyVote: false
   },
   mutations: {
     UPDATE_IS_LOADING(state, isLoading) {
       state.isLoading = isLoading;
+    },
+    UPDATE_HAS_ALREADY_VOTE(state, hasAlreadyVote) {
+      state.hasAlreadyVote = hasAlreadyVote;
     }
   },
   actions: {
     async addVotePhotoAlbum({ commit }, vote) {
-      await VotesService.addVotePhotoAlbum(vote);
-      commit('UPDATE_IS_LOADING', false);
+      VotesService.addVotePhotoAlbum(vote)
+        .then(() => {
+          commit('UPDATE_IS_LOADING', false);
+        })
+        .catch((err) => {
+          if (err.response.data.message === "Tu as déjà voté !") {
+            commit('UPDATE_HAS_ALREADY_VOTE', true);
+          }
+          commit('UPDATE_IS_LOADING', false);
+        });
     },
   }
 };

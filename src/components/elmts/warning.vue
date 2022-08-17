@@ -1,13 +1,16 @@
 <template>
   <div class="warning">
-    <h4>{{ $tr[$route.params.lang].openOnMobile }}</h4>
+    <h4>{{ text }}</h4>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: "WarningOpen",
+  name: "Warning",
+  props: {
+    text: { type: String, required: true }
+  }
 };
 </script>
 
