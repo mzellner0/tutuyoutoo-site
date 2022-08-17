@@ -2,8 +2,8 @@ import axios from "axios";
 import app from "@/main";
 
 const instance = axios.create({
-  // baseURL: "https://api.tutuyoutoo.com",
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api.tutuyoutoo.com",
+  // baseURL: "http://localhost:3000",
   // headers: {
   //   Authorization: 'Bearer ' + localStorage.getItem("jwt")
   // },
