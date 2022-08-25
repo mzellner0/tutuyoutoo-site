@@ -73,7 +73,7 @@ export default {
         },
         {
           img: "phone-expense.webp",
-          alt: "transfert d'argent",
+          alt: "equilibre",
           texts: [
             this.$tr[this.$route.params.lang].feature1a
           ],
@@ -81,7 +81,7 @@ export default {
         },
         {
           img: "phone-balance.webp",
-          alt: "transfert d'argent",
+          alt: "dépenses",
           texts: [
             this.$tr[this.$route.params.lang].feature1b
           ],
@@ -89,7 +89,7 @@ export default {
         },
        {
           img: "phone-refund.webp",
-          alt: "transfert d'argent",
+          alt: "remboursements",
           texts: [
             this.$tr[this.$route.params.lang].feature1c,
             this.$tr[this.$route.params.lang].feature1d,
@@ -97,9 +97,19 @@ export default {
           ],
           title: this.$tr[this.$route.params.lang].feature1cTitle
         },
+       {
+          img: "phone-podium.webp",
+          alt: "podium",
+          texts: [
+            this.$tr[this.$route.params.lang].feature13a,
+            this.$tr[this.$route.params.lang].feature13b,
+            this.$tr[this.$route.params.lang].feature13c
+          ],
+          title: this.$tr[this.$route.params.lang].feature13Title
+        },
         {
           img: "phone-proposition.webp",
-          alt: "proposition d'idées",
+          alt: "propositions",
           texts: [
             this.$tr[this.$route.params.lang].feature2
           ],
@@ -107,7 +117,7 @@ export default {
         },
         {
           img: "phone-pool.webp",
-          alt: "vote",
+          alt: "sondages",
           texts: [
             this.$tr[this.$route.params.lang].feature3
           ],
@@ -115,7 +125,7 @@ export default {
         },
         {
           img: "phone-list-bag.webp",
-          alt: "vote",
+          alt: "liste des sacs",
           texts: [
             this.$tr[this.$route.params.lang].feature9
           ],
@@ -123,7 +133,7 @@ export default {
         },
         {
           img: "phone-list-shop.webp",
-          alt: "vote",
+          alt: "liste de course",
           texts: [
             this.$tr[this.$route.params.lang].feature10
           ],
@@ -156,7 +166,7 @@ export default {
         },
         {
           img: "phone-community.webp",
-          alt: "notes",
+          alt: "recommandations",
           texts: [
             this.$tr[this.$route.params.lang].feature8
           ],
@@ -164,7 +174,7 @@ export default {
         },
         {
           img: "phone-list-perso.webp",
-          alt: "vote",
+          alt: "liste de ton sac",
           texts: [
             this.$tr[this.$route.params.lang].feature11
           ],
@@ -172,7 +182,7 @@ export default {
         },
         {
           img: "phone-profile.webp",
-          alt: "vote",
+          alt: "profil",
           texts: [
             this.$tr[this.$route.params.lang].feature12
           ],
