@@ -4,7 +4,7 @@
     <footer>
       <p>
         {{ getContact }}
-        <a href="mailto:contact@tutuyoutoo.com">contact@tutuyoutoo.com</a>
+        <a href="mailto:contact@tutuyoutoo.fr">contact@tutuyoutoo.fr</a>
       </p>
       <p>
         <a href="https://tutuyoutoo.com/src/policies.pdf" target="_blank">
