@@ -123,7 +123,15 @@ export default {
         franceBleuTitle: "France Bleu pays de Savoie talks about Tutuyoutoo ! Broadcast on June 24, 2022.",
         openOnMobile: "You must open this link from your phone to be redirected to the application.",
         thanksVote: "Thank you for your vote, it has been taken into account!",
-        youAlreadyVote: "You can only vote once. We thank you again for your participation!"
+        youAlreadyVote: "You can only vote once. We thank you again for your participation!",
+        storageTitle: "Add photos to the group",
+        storageAddFiles: "Select files",
+        storageType: "mp4, webp, png, jpg, gif only",
+        storageUpload: "Upload them in the group",
+        storageSizeLeft1: "You have",
+        storageSizeLeft2: "of space left",
+        storageSizeFiles: "Size of the selected files",
+        storageDone: "Transfer completed!"
     },
     fr: {
         title: "Tutuyoutoo",
@@ -249,6 +257,14 @@ export default {
         franceBleuTitle: "France Bleu pays de Savoie parle de Tutuyoutoo ! Diffusé le 24 juin 2022.",
         openOnMobile: "Vous devez ouvrir ce lien depuis votre téléphone pour être redirigé vers l'application.",
         thanksVote: "Merci pour ton vote, il a bien été pris en compte !",
-        youAlreadyVote: "Tu ne peux voter qu'une seule fois. On te remercie encore pour ta participation !"
+        youAlreadyVote: "Tu ne peux voter qu'une seule fois. On te remercie encore pour ta participation !",
+        storageTitle: "Ajoute des photos au groupe",
+        storageAddFiles: "Séléctionne des fichiers",
+        storageType: "mp4, webp, png, jpg, gif seulement",
+        storageUpload: "Transfère-les dans le groupe.",
+        storageSizeLeft1: "Il te reste",
+        storageSizeLeft2: "de place",
+        storageSizeFiles: "Taille des fichiers séléctionnés",
+        storageDone: "Transfert terminé !"
     }
 };

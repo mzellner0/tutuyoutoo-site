@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view />
-    <footer>
+    <footer v-if="$route.name != 'Storage'">
       <p>
         {{ getContact }}
         <a href="mailto:contact@tutuyoutoo.fr">contact@tutuyoutoo.fr</a>

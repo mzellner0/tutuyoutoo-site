@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import DownloadRedirectView from '../views/DownloadRedirectView.vue';
 import Landing from '../views/Landing.vue';
 import OpenOnMobile from '../views/OpenOnMobile.vue';
+import StorageView from '../views/StorageView.vue';
 import VotePhotoAlbumView from '../views/VotePhotoAlbumView.vue';
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     path: '/:lang/vote-photo-album/:vote',
     name: 'VotePhotoAlbum',
     component: VotePhotoAlbumView
+  },
+  {
+    path: '/:lang/storage/:groupId/:userId/:groupName',
+    name: 'Storage',
+    component: StorageView
   },
   {
     path: '/:lang/open-on-mobile',
@@ -50,6 +56,7 @@ router.beforeEach((to, from, next) => {
     to.name === 'Landing' ||
     to.name === 'OpenOnMobile' ||
     to.name === 'DownloadRedirect' ||
+    to.name === 'Storage' ||
     to.name === 'VotePhotoAlbum'
   ) {
     if (to.params.lang !== "en" && to.params.lang !== "fr") {
