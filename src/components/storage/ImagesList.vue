@@ -11,12 +11,12 @@
       <div class="images--elmt" v-if="
         file.name.slice(-3) === 'jpg' ||
         file.name.slice(-3) === 'png' ||
-        file.name.slice(-3) === 'jpeg' ||
+        file.name.slice(-4) === 'jpeg' ||
         file.name.slice(-3) === 'gif' ||
         file.name.slice(-4) === 'webp' ||
         file.name.slice(-3) === 'JPG' ||
         file.name.slice(-3) === 'PNG' ||
-        file.name.slice(-3) === 'JPEG' ||
+        file.name.slice(-4) === 'JPEG' ||
         file.name.slice(-3) === 'GIF' ||
         file.name.slice(-4) === 'WEBP'
       ">
