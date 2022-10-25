@@ -9,16 +9,11 @@
         <img src="@/assets/images/trash-white.svg" alt="">
       </div>
       <div class="images--elmt" v-if="
-        file.name.slice(-3) === 'jpg' ||
-        file.name.slice(-3) === 'png' ||
-        file.name.slice(-4) === 'jpeg' ||
-        file.name.slice(-3) === 'gif' ||
-        file.name.slice(-4) === 'webp' ||
-        file.name.slice(-3) === 'JPG' ||
-        file.name.slice(-3) === 'PNG' ||
-        file.name.slice(-4) === 'JPEG' ||
-        file.name.slice(-3) === 'GIF' ||
-        file.name.slice(-4) === 'WEBP'
+        file.name.slice(-3).toLowerCase() === 'jpg' ||
+        file.name.slice(-3).toLowerCase() === 'png' ||
+        file.name.slice(-4).toLowerCase() === 'jpeg' ||
+        file.name.slice(-3).toLowerCase() === 'gif' ||
+        file.name.slice(-4).toLowerCase() === 'webp'
       ">
         <img
           class="info"
@@ -30,8 +25,8 @@
         >
       </div>
       <div class="images--elmt" v-else-if="
-        file.name.slice(-3) == 'mp4' ||
-        file.name.slice(-3) === 'MP4'
+        file.name.slice(-3).toLowerCase() == 'mp4' ||
+        file.name.slice(-4).toLowerCase() == 'webm'
       ">
         <img
           class="info"

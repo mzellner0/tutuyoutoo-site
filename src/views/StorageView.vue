@@ -12,9 +12,14 @@
       id="upload-files"
       multiple
       @change="addFiles"
-      accept="image/png, image/jpeg, image/jpg, video/avi, video/x-msvideo, image/gif, video/mpeg, video/mp4, mpeg, video/webm, image/webp"
+      accept="image/png, image/jpeg, image/jpg, image/gif, video/mpeg, video/mp4, mpeg, video/webm, image/webp"
     />
     <p>{{ `(${$tr[$route.params.lang].storageType})` }}</p>
+    <p :class="[
+      { 'storage__infos--size-to-big': fileTooBig && replayAnim }
+    ]">
+      {{ `(${$tr[$route.params.lang].storageSize})` }}
+    </p>
     <div
       :class="[
         'storage__infos',
@@ -75,7 +80,10 @@ export default {
       files: [],
       totalSize: 0,
       replayAnim: true,
-      showDoneMessage: false
+      showDoneMessage: false,
+      maxSizeImage: 30000000,
+      maxSizeVideo: 200000000,
+      fileTooBig: false
     }
   },
   computed: {
@@ -100,14 +108,49 @@ export default {
       'getSizeLeft'
     ]),
     addFiles(event) {
+      this.fileTooBig = false;
       Array.from(event.target.files).map(
         file => {
-          this.totalSize += file.size;
-          this.files.push({
-            name: file.name,
-            url: URL.createObjectURL(file),
-            file: file,
-          });
+          if (
+            (
+              file.name.slice(-3).toLowerCase() === 'mp4' &&
+              file.size <= this.maxSizeVideo
+            ) ||
+            (
+              file.name.slice(-3).toLowerCase() != "mp4" &&
+              file.size <= this.maxSizeImage
+            )
+          ) {
+            this.totalSize += file.size;
+
+            const year = file.lastModifiedDate.getFullYear();
+            const month = (file.lastModifiedDate.getMonth() + 1).toString();
+            const day = (file.lastModifiedDate.getDate()).toString();
+            const date = `${year}-${month.length < 2 ? "0" + month : month}-${day.length < 2 ? "0" + day : day}_00:00:00.000`;
+
+            let name = Date.now();
+            if (
+              file.name.slice(-4) == "webp" ||
+              file.name.slice(-4) == "webm" ||
+              file.name.slice(-4) == "jpeg"
+            ) {
+              name = `${name}date${date}.${file.name.slice(-4)}`;
+            } else {
+              name = `${name}date${date}.${file.name.slice(-3)}`;
+            }
+
+            this.files.push({
+              name: name,
+              url: URL.createObjectURL(file),
+              file: file
+            });
+          } else {
+            this.fileTooBig = true;
+            this.replayAnim = false;
+            setTimeout(() => {
+              this.replayAnim = true;
+            }, 100)
+          }
         }
       );
     },
@@ -118,10 +161,8 @@ export default {
       }, 100)
       if (!this.sizeToBig) {
         sessionStorage.setItem("tk", this.$route.query.tk);
-        const fileToUpload = [];
-        this.files.map(file => fileToUpload.push(file.file));
         this.uploadFiles({
-          files: fileToUpload,
+          files: this.files,
           groupId: this.$route.params.groupId,
           userId: this.$route.params.userId
         }).then(() => {

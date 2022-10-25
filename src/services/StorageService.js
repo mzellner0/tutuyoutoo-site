@@ -7,7 +7,8 @@ export default {
     userId
   ) {
     const formData = new FormData();
-    files.map(file => formData.append('images', file));
+    formData.append('isComingFromWeb', "true")
+    files.map(file => formData.append('images', file.file, file.name));
 
     return Api.post(
       `/stock-photos/${groupId}/${userId}`,
