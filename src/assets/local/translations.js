@@ -127,7 +127,7 @@ export default {
         storageTitle: "Add photos to the group",
         storageAddFiles: "Select files",
         storageType: "mp4, webp, png, jpg, gif only",
-        storageSize: "30 Mb max for an image and 200 Mb max for a video",
+        storageSize: "30 MB max for an image and 200 MB max for a video",
         storageUpload: "Upload them in the group",
         storageSizeLeft1: "You have",
         storageSizeLeft2: "of space left",

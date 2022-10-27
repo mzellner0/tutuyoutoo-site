@@ -43,9 +43,20 @@
     <p v-if="showDoneMessage" class="storage__done">
       {{ $tr[$route.params.lang].storageDone }}
     </p>
-    <ImagesList :files="files" @delete-image="deleteImage" />
+    <ImagesList
+      :style="{
+        'pointerEvents': files.length === thumbnails.length
+          ? 'auto' :  'none'
+      }"
+      :files="files"
+      @delete-image="deleteImage"
+    />
     <Button
-      v-if="files.length != 0 && !loading"
+      v-if="
+      files.length != 0 &&
+      !loading &&
+      files.length === thumbnails.length
+    "
       :text="$tr[$route.params.lang].storageUpload"
       :on-click="uploadFilesToServer"
       :extra-large="true"
@@ -83,7 +94,8 @@ export default {
       showDoneMessage: false,
       maxSizeImage: 30000000,
       maxSizeVideo: 200000000,
-      fileTooBig: false
+      fileTooBig: false,
+      thumbnails: []
     }
   },
   computed: {
@@ -107,6 +119,106 @@ export default {
       'uploadFiles',
       'getSizeLeft'
     ]),
+    createThumbnailVideo(file, name) {
+      var canvas = document.createElement('canvas');
+      var video = document.createElement('video');
+      const source = document.createElement('source');
+      video.appendChild(source);
+
+      const context = canvas.getContext('2d');
+      const urlRef = URL.createObjectURL(file);
+
+      source.setAttribute('src', urlRef);
+      video.setAttribute('crossorigin', 'anonymous');
+
+      video.currentTime = 0.1;
+      video.load();
+
+      video.addEventListener('loadedmetadata', () => {
+        canvas.width = 400;
+        canvas.height = (video.videoHeight * 400) / video.videoWidth;
+      });
+
+      video.addEventListener('loadeddata', () => {
+        context.drawImage(
+          video,
+          0,
+          0,
+          400,
+          (video.videoHeight * 400) / video.videoWidth
+        );
+
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            return;
+          }
+          let newName = name.replace("mp4", "jpg");
+          newName = newName.replace("MP4", "jpg");
+          const newFile = new File(
+            [blob],
+            newName,
+            {
+              type: 'image/jpeg',
+            }
+          );
+          this.thumbnails.push({
+            "file": newFile,
+            "name": newName,
+            "urlRef": urlRef
+          });
+          video.remove();
+          canvas.remove();
+        }, 'image/jpeg', 0.1)
+      });
+    },
+    createThumbnailImage(file, name) {
+      var canvas = document.createElement('canvas');
+      var image = new Image;
+
+      const context = canvas.getContext('2d');
+      const urlRef = URL.createObjectURL(file);
+      image.src = urlRef;
+
+      image.onload = () => {
+        canvas.width = 400;
+        canvas.height = (image.height * 400) / image.width;
+        context.drawImage(
+          image,
+          0,
+          0,
+          400,
+          (image.height * 400) / image.width
+        );
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            return;
+          }
+          let newName;
+          if (
+            name.slice(-4) == "webp" ||
+            name.slice(-4) == "webm" ||
+            name.slice(-4) == "jpeg"
+          ) {
+            newName = `${name.substring(0, name.length - 4)}jpg`;
+          } else {
+            newName = `${name.substring(0, name.length - 3)}jpg`;
+          }
+          const newFile = new File(
+            [blob],
+            newName,
+            {
+              type: 'image/jpeg',
+            }
+          );
+          this.thumbnails.push({
+            "file": newFile,
+            "name": newName,
+            "urlRef": urlRef
+          });
+          canvas.remove();
+        }, 'image/jpeg', 0.2)
+      }
+    },
     addFiles(event) {
       this.fileTooBig = false;
       Array.from(event.target.files).map(
@@ -126,7 +238,7 @@ export default {
             const year = file.lastModifiedDate.getFullYear();
             const month = (file.lastModifiedDate.getMonth() + 1).toString();
             const day = (file.lastModifiedDate.getDate()).toString();
-            const date = `${year}-${month.length < 2 ? "0" + month : month}-${day.length < 2 ? "0" + day : day}_00:00:00.000`;
+            const date = `${year}-${month.length < 2 ? "0" + month : month}-${day.length < 2 ? "0" + day : day}_00:00:00`;
 
             let name = Date.now();
             if (
@@ -134,9 +246,15 @@ export default {
               file.name.slice(-4) == "webm" ||
               file.name.slice(-4) == "jpeg"
             ) {
-              name = `${name}date${date}.${file.name.slice(-4)}`;
+              name = `${name}date${date}.${file.name.slice(-4)}`.toLowerCase();
             } else {
-              name = `${name}date${date}.${file.name.slice(-3)}`;
+              name = `${name}date${date}.${file.name.slice(-3)}`.toLowerCase();
+            }
+
+            if (file.name.slice(-3).toLowerCase() === 'mp4') {
+              this.createThumbnailVideo(file, name);
+            } else {
+              this.createThumbnailImage(file, name);
             }
 
             this.files.push({
@@ -163,11 +281,16 @@ export default {
         sessionStorage.setItem("tk", this.$route.query.tk);
         this.uploadFiles({
           files: this.files,
+          thumbnails: this.thumbnails,
           groupId: this.$route.params.groupId,
           userId: this.$route.params.userId
         }).then(() => {
           this.getSizeLeft({ userId: this.$route.params.userId });
           this.files = [];
+          this.thumbnails.map(thumbnail => {
+            URL.revokeObjectURL(thumbnail.urlRef);
+          });
+          this.thumbnails = [];
           this.totalSize = 0;
           this.showDoneMessage = true;
           setTimeout(() => {
@@ -178,7 +301,15 @@ export default {
     },
     deleteImage(index) {
       this.totalSize -= this.files[index].file.size;
-      this.files.splice(index, 1);
+      let nameToRemove = this.files[index].name;
+      this.files = this.files.filter(
+        file => file.name != nameToRemove
+      );
+      nameToRemove = nameToRemove.replace("mp4", "jpg");
+      nameToRemove = nameToRemove.replace("MP4", "jpg");
+      this.thumbnails = this.thumbnails.filter(
+        thumbnail => thumbnail.name != nameToRemove
+      );
     }
   }
 };

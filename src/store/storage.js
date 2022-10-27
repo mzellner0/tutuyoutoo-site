@@ -12,9 +12,12 @@ export default {
     }
   },
   actions: {
-    async uploadFiles({ commit }, { files, groupId, userId }) {
+    async uploadFiles(
+      { commit }, { files, thumbnails, groupId, userId }
+    ) {
       const response = await StorageService.importImagePost(
         files,
+        thumbnails,
         groupId,
         userId
       );
