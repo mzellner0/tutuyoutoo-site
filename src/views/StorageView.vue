@@ -240,7 +240,7 @@ export default {
             const day = (file.lastModifiedDate.getDate()).toString();
             const date = `${year}-${month.length < 2 ? "0" + month : month}-${day.length < 2 ? "0" + day : day}_00:00:00`;
 
-            let name = Date.now();
+            let name = `${Date.now()}user${this.$route.query.user}`;
             if (
               file.name.slice(-4) == "webp" ||
               file.name.slice(-4) == "webm" ||
