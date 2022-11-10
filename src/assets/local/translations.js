@@ -132,7 +132,11 @@ export default {
         storageSizeLeft1: "You have",
         storageSizeLeft2: "of space left",
         storageSizeFiles: "Size of the selected files",
-        storageDone: "Transfer completed!"
+        storageDone: "Transfer completed!",
+        paymentButton: "I go to the payment",
+        paymentSuccess: "Order completed!",
+        paymentEmail: "You will receive a validation email.",
+        paymentCancel: "An error occurred during the payment process."
     },
     fr: {
         title: "Tutuyoutoo",
@@ -267,6 +271,10 @@ export default {
         storageSizeLeft1: "Il te reste",
         storageSizeLeft2: "de place",
         storageSizeFiles: "Taille des fichiers séléctionnés",
-        storageDone: "Transfert terminé !"
+        storageDone: "Transfert terminé !",
+        paymentButton: "Je passe au paiement",
+        paymentSuccess: "Commande validée !",
+        paymentEmail: "Tu vas recevoir un email de validation.",
+        paymentCancel: "Une erreur s'est produite pendant le paiement."
     }
 };
