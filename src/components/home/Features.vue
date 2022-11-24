@@ -1,9 +1,13 @@
 <template>
-  <div :class="[
-    'features__container',
-    { 'features__container--isNotTitle': !isTitle }
-  ]">
-    <h2 v-if="isTitle">{{ $tr[$route.params.lang].titleFeatures }}</h2>
+  <div
+    :class="[
+      'features__container',
+      { 'features__container--isNotTitle': !isTitle }
+    ]"
+  >
+    <h2 v-if="isTitle">
+      {{ $tr[$route.params.lang].titleFeatures }}
+    </h2>
     <ul class="features">
       <li
         v-for="(feature, index) in features"
@@ -97,7 +101,15 @@ export default {
           ],
           title: this.$tr[this.$route.params.lang].feature1cTitle
         },
-       {
+        {
+          img: "phone-chat.webp",
+          alt: "chat",
+          texts: [
+            this.$tr[this.$route.params.lang].feature14
+          ],
+          title: this.$tr[this.$route.params.lang].feature14Title
+        },
+        {
           img: "phone-podium.webp",
           alt: "podium",
           texts: [
@@ -157,6 +169,25 @@ export default {
           title: this.$tr[this.$route.params.lang].feature7Title
         },
         {
+          img: "phone-photos.webp",
+          alt: "photos",
+          texts: [
+            this.$tr[this.$route.params.lang].feature15
+          ],
+          title: this.$tr[this.$route.params.lang].feature15Title
+        },
+        {
+          img: "phone-album.webp",
+          alt: "albums",
+          texts: [
+            this.$tr[this.$route.params.lang].feature16a,
+            this.$tr[this.$route.params.lang].feature16b,
+            this.$tr[this.$route.params.lang].feature16c,
+            this.$tr[this.$route.params.lang].feature16d
+          ],
+          title: this.$tr[this.$route.params.lang].feature16Title
+        },
+        {
           img: "phone-notif.webp",
           alt: "notification",
           texts: [
@@ -164,14 +195,14 @@ export default {
           ],
           title: this.$tr[this.$route.params.lang].feature4Title
         },
-        {
-          img: "phone-community.webp",
-          alt: "recommandations",
-          texts: [
-            this.$tr[this.$route.params.lang].feature8
-          ],
-          title: this.$tr[this.$route.params.lang].feature8Title
-        },
+        // {
+        //   img: "phone-community.webp",
+        //   alt: "recommandations",
+        //   texts: [
+        //     this.$tr[this.$route.params.lang].feature8
+        //   ],
+        //   title: this.$tr[this.$route.params.lang].feature8Title
+        // },
         {
           img: "phone-list-perso.webp",
           alt: "liste de ton sac",
@@ -188,7 +219,7 @@ export default {
           ],
           title: this.$tr[this.$route.params.lang].feature12Title
         },
-      ]
+      ];
     }
   }
 };
