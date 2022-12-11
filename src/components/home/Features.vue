@@ -136,6 +136,16 @@ export default {
           title: this.$tr[this.$route.params.lang].feature3Title
         },
         {
+          img: "phone-documents.webp",
+          alt: "liste des sacs",
+          texts: [
+            this.$tr[this.$route.params.lang].feature17a,
+            this.$tr[this.$route.params.lang].feature17b,
+            this.$tr[this.$route.params.lang].feature17c
+          ],
+          title: this.$tr[this.$route.params.lang].feature17Title
+        },
+        {
           img: "phone-list-bag.webp",
           alt: "liste des sacs",
           texts: [
