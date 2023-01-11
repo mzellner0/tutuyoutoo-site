@@ -1,5 +1,5 @@
 <template>
-  <div class="warning">
+  <div :class="['warning', { 'without-border': withoutBorder }]">
     <h4>{{ text }}</h4>
   </div>
 </template>
@@ -9,7 +9,8 @@
 export default {
   name: "Warning",
   props: {
-    text: { type: String, required: true }
+    text: { type: String, required: true },
+    withoutBorder: { type: Boolean }
   }
 };
 </script>
@@ -22,6 +23,9 @@ export default {
         font-size: 20px;
         text-align: center;
     }
+  }
+  .without-border {
+    border: none;
   }
 
   @include breakpoint(800) {

@@ -61,12 +61,14 @@
         <Warning
           v-else
           :text="$tr[$route.params.lang].thanksVote"
+          :without-border="true"
         />
       </div>
       <Warning
         v-else-if="!isLoading && hasAlreadyVote"
         class="page__vote-goodies"
         :text="$tr[$route.params.lang].youAlreadyVote"
+        :without-border="true"
       />
       <div v-else class="page__loader">
         <LoaderCircle />
