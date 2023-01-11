@@ -4,7 +4,8 @@
     <footer v-if="
       $route.name != 'Storage' &&
       $route.name != 'PaymentSuccess' &&
-      $route.name != 'PaymentCancel'
+      $route.name != 'PaymentCancel' &&
+      $route.name != 'VoteGoodies'
     ">
       <p>
         {{ getContact }}

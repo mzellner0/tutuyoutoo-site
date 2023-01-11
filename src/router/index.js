@@ -7,6 +7,7 @@ import StorageView from '../views/StorageView.vue';
 import PaymentSuccessView from '../views/PaymentSuccessView.vue';
 import PaymentCancelView from '../views/PaymentCancelView.vue';
 import VotePhotoAlbumView from '../views/VotePhotoAlbumView.vue';
+import VoteGoodiesView from '../views/VoteGoodiesView.vue';
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: '/:lang/vote-photo-album/:vote',
     name: 'VotePhotoAlbum',
     component: VotePhotoAlbumView
+  },
+  {
+    path: '/:lang/vote-goodies/:vote/:email',
+    name: 'VoteGoodies',
+    component: VoteGoodiesView
   },
   {
     path: '/:lang/storage/:groupId/:userId/:groupName',
@@ -70,6 +76,7 @@ router.beforeEach((to, from, next) => {
     to.name === 'DownloadRedirect' ||
     to.name === 'Storage' ||
     to.name === 'VotePhotoAlbum' ||
+    to.name === 'VoteGoodies' ||
     to.name === 'PaymentSuccess' ||
     to.name === 'PaymentCancel'
   ) {

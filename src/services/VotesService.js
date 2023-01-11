@@ -10,5 +10,17 @@ export default {
         }],
         { returning: "minimal" }
       );
-  }
+  },
+  async addVoteGoodies(vote, email, accessories) {
+    return await supabase
+      .from('votegoodies')
+      .insert(
+        [{
+          vote: vote,
+          email: email,
+          accessories: accessories
+        }],
+        { returning: "minimal" }
+      );
+  },
 }

@@ -38,10 +38,10 @@ export default {
     margin-top: 40px;
     text-align: center;
   }
-  /deep/ span {
-      font-family: $police-2;
-      font-style: italic;
-  }
+  // /deep/ span {
+  //     font-family: $police-2;
+  //     font-style: italic;
+  // }
   &__profile {
     @include flex(column, center, center);
     margin-top: 0px;
