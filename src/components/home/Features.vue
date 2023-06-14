@@ -186,17 +186,17 @@ export default {
           ],
           title: this.$tr[this.$route.params.lang].feature15Title
         },
-        {
-          img: "phone-album.webp",
-          alt: "albums",
-          texts: [
-            this.$tr[this.$route.params.lang].feature16a,
-            this.$tr[this.$route.params.lang].feature16b,
-            this.$tr[this.$route.params.lang].feature16c,
-            this.$tr[this.$route.params.lang].feature16d
-          ],
-          title: this.$tr[this.$route.params.lang].feature16Title
-        },
+        // {
+        //   img: "phone-album.webp",
+        //   alt: "albums",
+        //   texts: [
+        //     this.$tr[this.$route.params.lang].feature16a,
+        //     this.$tr[this.$route.params.lang].feature16b,
+        //     this.$tr[this.$route.params.lang].feature16c,
+        //     this.$tr[this.$route.params.lang].feature16d
+        //   ],
+        //   title: this.$tr[this.$route.params.lang].feature16Title
+        // },
         {
           img: "phone-notif.webp",
           alt: "notification",
