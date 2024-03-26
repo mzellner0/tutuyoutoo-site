@@ -8,6 +8,7 @@ import PaymentSuccessView from '../views/PaymentSuccessView.vue';
 import PaymentCancelView from '../views/PaymentCancelView.vue';
 import VotePhotoAlbumView from '../views/VotePhotoAlbumView.vue';
 import VoteGoodiesView from '../views/VoteGoodiesView.vue';
+import PrivacyPolicyView from '../views/PrivacyPolicyView.vue';
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     name: 'Update',
     component: DownloadRedirectView
   },
+  {
+    path: '/:lang/privacy-policy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicyView
+  }
 ];
 
 const router = createRouter({
@@ -78,7 +84,8 @@ router.beforeEach((to, from, next) => {
     to.name === 'VotePhotoAlbum' ||
     to.name === 'VoteGoodies' ||
     to.name === 'PaymentSuccess' ||
-    to.name === 'PaymentCancel'
+    to.name === 'PaymentCancel' ||
+    to.name === 'PrivacyPolicy'
   ) {
     if (to.params.lang !== "en" && to.params.lang !== "fr") {
       next({ name: to.name, params: { lang: "fr" } });

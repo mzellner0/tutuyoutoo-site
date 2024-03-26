@@ -1,21 +1,22 @@
 <template>
   <div>
     <router-view />
-    <footer v-if="
-      $route.name != 'Storage' &&
-      $route.name != 'PaymentSuccess' &&
-      $route.name != 'PaymentCancel' &&
-      $route.name != 'VoteGoodies'
-    ">
+    <footer
+      v-if="
+        $route.name != 'Storage' &&
+          $route.name != 'PaymentSuccess' &&
+          $route.name != 'PaymentCancel' &&
+          $route.name != 'VoteGoodies' &&
+          $route.name != 'PrivacyPolicy'
+      "
+    >
       <p>
         {{ getContact }}
         <a href="mailto:contact@tutuyoutoo.fr">contact@tutuyoutoo.fr</a>
       </p>
-      <p>
-        <a href="https://tutuyoutoo.com/src/policies.pdf" target="_blank">
-          {{ getPolicies }}
-        </a>
-      </p>
+      <router-link :to="`/${$route.params.lang}/privacy-policy`">
+        <p>{{ getPolicies }}</p>
+      </router-link>
     </footer>
   </div>
 </template>
@@ -28,11 +29,15 @@ export default {
     getContact() {
       if (this.$route.params.lang) {
         return this.$tr[this.$route.params.lang].contact;
+      } else {
+        return '';
       }
     },
     getPolicies() {
       if (this.$route.params.lang) {
         return this.$tr[this.$route.params.lang].policies;
+      } else {
+        return '';
       }
     }
   }
