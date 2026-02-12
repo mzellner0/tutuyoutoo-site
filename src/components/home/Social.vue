@@ -1,21 +1,45 @@
 <template>
-	<div :class="['social', { 'social--is-last': isLast }]">
-		<p>{{ $tr[$route.params.lang].follow }}</p>
-		<div class="social__icons">
-			<a href="https://www.tiktok.com/@tutuyoutoo" target="_blank">
-				<img src="@/assets/images/tiktok.svg" alt="tik tok" />
-			</a>
-			<a href="https://www.instagram.com/tutuyoutoo/" target="_blank">
-				<img src="@/assets/images/instagram.svg" alt="instagram" />
-			</a>
-			<a href="https://www.facebook.com/Tutuyoutoo" target="_blank">
-				<img src="@/assets/images/facebook.svg" alt="facebook" />
-			</a>
-			<a href="https://www.linkedin.com/company/tutuyoutoo/" target="_blank">
-				<img src="@/assets/images/linkedin.svg" alt="linkedin" />
-			</a>
-		</div>
-	</div>
+  <div :class="['social', { 'social--is-last': isLast }]">
+    <p>{{ $tr[$route.params.lang].follow }}</p>
+    <div class="social__icons">
+      <a
+        href="https://www.tiktok.com/@tutuyoutoo"
+        target="_blank"
+      >
+        <img
+          src="@/assets/images/tiktok.svg"
+          alt="tik tok"
+        >
+      </a>
+      <a
+        href="https://www.instagram.com/tutuyoutoo/"
+        target="_blank"
+      >
+        <img
+          src="@/assets/images/instagram.svg"
+          alt="instagram"
+        >
+      </a>
+      <a
+        href="https://www.facebook.com/Tutuyoutoo"
+        target="_blank"
+      >
+        <img
+          src="@/assets/images/facebook.svg"
+          alt="facebook"
+        >
+      </a>
+      <a
+        href="https://www.linkedin.com/company/tutuyoutoo/"
+        target="_blank"
+      >
+        <img
+          src="@/assets/images/linkedin.svg"
+          alt="linkedin"
+        >
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -24,7 +48,7 @@ export default {
 	props: {
 		isLast: { type: Boolean, default: false }
 	}
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,9 +59,7 @@ export default {
 	justify-content: center;
   width: 900px;
   padding: 0px 80px;
-  padding-bottom: 100px;
 	margin-top: 60px;
-  border-bottom: 2px solid $color-police-main;
 	&--is-last {
 		border: none;
 		padding-bottom: 0px;
@@ -62,7 +84,6 @@ export default {
   .social {
     width: 600px;
     padding: 0px 60px;
-    padding-bottom: 70px;
 		&--is-last {
 			padding-bottom: 0px;
 		}
@@ -74,7 +95,6 @@ export default {
 		margin-top: 40px;
     width: 90%;
     padding: 0px;
-    padding-bottom: 50px;
 		&--is-last {
 			padding-bottom: 0px;
 		}

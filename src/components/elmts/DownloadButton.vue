@@ -31,13 +31,6 @@ export default {
         : '#download';
     },
     clickOnDownload() {
-      fbq(
-        'trackCustom',
-        'clickDownload',
-        {
-          device: navigator.userAgent
-        }
-      );
       if (this.isOnLanding) {
         const link = this.tryOpenLink();
         gtag_report_conversion(link);

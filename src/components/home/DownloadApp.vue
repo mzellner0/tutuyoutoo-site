@@ -9,7 +9,6 @@
         class="download-icon android"
         target="_blank"
         :href="isOnLanding ? null : 'https://play.google.com/store/apps/details?id=com.tutuyoutoo.app'"
-        @click="clickOnAndroid"
       >
         <img
           src="@/assets/images/home/android.svg"
@@ -21,7 +20,6 @@
         class="download-icon apple"
         :href="isOnLanding ? null : 'https://apps.apple.com/fr/app/tutuyoutoo/id1623327908'"
         target="_blank"
-        @click="clickIos"
       >
         <img
           src="@/assets/images/home/apple.svg"
@@ -39,20 +37,6 @@ export default {
     isLast: { type: Boolean, default: false },
     isOnLanding: { type: Boolean, default: false }
   },
-	methods: {
-		clickOnAndroid() {
-			fbq('trackCustom', 'clickAndroid');
-			if (this.isOnLanding) {
-				gtag_report_conversion("https://play.google.com/store/apps/details?id=com.tutuyoutoo.app");
-			}
-		},
-		clickIos() {
-			fbq('trackCustom', 'clickIos');
-			if (this.isOnLanding) {
-				gtag_report_conversion("https://apps.apple.com/fr/app/tutuyoutoo/id1623327908");
-			}
-		}
-	}
 };
 </script>
 

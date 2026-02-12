@@ -1,15 +1,7 @@
 <template>
   <div>
     <router-view />
-    <footer
-      v-if="
-        $route.name != 'Storage' &&
-          $route.name != 'PaymentSuccess' &&
-          $route.name != 'PaymentCancel' &&
-          $route.name != 'VoteGoodies' &&
-          $route.name != 'PrivacyPolicy'
-      "
-    >
+    <footer>
       <p>
         {{ getContact }}
         <a href="mailto:contact@tutuyoutoo.fr">contact@tutuyoutoo.fr</a>

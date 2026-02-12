@@ -1,14 +1,11 @@
 <template>
   <div class="home container">
     <LangButton />
-    <DownloadButton />
     <TitleTop />
     <Intro class="home__intro" />
-    <DownloadApp />
     <Features />
     <Articles />
     <Social />
-    <DownloadApp :is-last="true" />
   </div>
 </template>
 
@@ -16,9 +13,7 @@
 import Intro from "@/components/home/Intro";
 import Features from "@/components/home/Features";
 import Social from "@/components/home/Social";
-import DownloadApp from "@/components/home/DownloadApp";
 import Articles from "@/components/home/Articles";
-import DownloadButton from "@/components/elmts/DownloadButton";
 import LangButton from "@/components/elmts/LangButton";
 import TitleTop from "../components/elmts/TitleTop.vue";
 
@@ -26,11 +21,9 @@ export default {
   name: 'HomeView',
   components: {
     Intro,
-    DownloadApp,
     Features,
     Social,
     Articles,
-    DownloadButton,
     LangButton,
     TitleTop
   }
