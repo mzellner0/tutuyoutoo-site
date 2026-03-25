@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/tutuyoutoo-site/',
+    publicPath: '/',
     css: {
       loaderOptions: {
         sass: {
